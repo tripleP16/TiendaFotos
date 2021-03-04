@@ -19,11 +19,12 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/inicio' },
+  'GET /':'PrincipalController.inicio',
   '/acerca-de':{view:'pages/acerca_de'},
   'GET /registro':'SesionController.registro',
   'POST /procesar-registro':'SesionController.procesarRegistro',
-
+  'GET /inicio-sesion':'SesionController.iniciarSesion', 
+  'POST /procesar-inicio':'SesionController.procesarInicio',
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
