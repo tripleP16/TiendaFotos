@@ -20,7 +20,9 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'pages/inicio' },
-  '/acerca-de':{view:'pages/acerca_de'}
+  '/acerca-de':{view:'pages/acerca_de'},
+  'GET /registro':'SesionController.registro',
+  'POST /procesar-registro':'SesionController.procesarRegistro',
 
   /***************************************************************************
   *                                                                          *
