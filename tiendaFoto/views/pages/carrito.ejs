@@ -1,0 +1,27 @@
+<div class="containerC">
+<div class="row ">
+    <h1 class="text-center">Tus Fotos</h1>
+    <% var total = 0 %>
+    <% elementos.forEach(elemento =>{ %> 
+        <div class="col-lg-4 col-sm-12 carta" >
+          <div class="card" >
+            <img src= "<%= elemento.foto.contenido %>"  class="d-block w-100 imagenI">
+            <div class="card-body">
+              <h5 class="card-title"> $ <%= elemento.foto.precio %></h5>
+              <a href="/eliminar-carrito/<%=elemento.foto.id%>" class="btn btn-danger">Eliminar del Carrito <i class="bi bi-cart-x-fill"></i></a>
+            </div>
+          </div>
+          
+        </div>
+        <%total+= elemento.foto.precio %>
+        <% }) %>    
+</div>
+<div class="row">
+    <div class="col-lg-12 col-sm-12 contenedor">
+        <h5>Total: <%= total %> </h5>
+        <a href="/pagar" class="btn btn-success pago">Pagar <i class="bi bi-cart-check-fill"></i></a>
+    </div>
+</div>
+
+
+</div>
