@@ -21,10 +21,12 @@ module.exports.routes = {
 
   'GET /':'PrincipalController.inicio',
   '/acerca-de':{view:'pages/acerca_de'},
+  '/index':{ action: 'Principal/inicio', locals:{layout:'layouts/iniciado', titulo:'Inicio2'} },
   'GET /registro':'SesionController.registro',
   'POST /procesar-registro':'SesionController.procesarRegistro',
   'GET /inicio-sesion':'SesionController.iniciarSesion', 
   'POST /procesar-inicio':'SesionController.procesarInicio',
+  'GET /cerrar-sesion':'SesionController.cerrar',
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

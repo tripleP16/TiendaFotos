@@ -29,7 +29,8 @@ module.exports = {
     let cliente = await Cliente.findOne({email:peticion.body.email, contrasena:peticion.body.contrasena}); 
     if(cliente){
       peticion.addFlash('men', 'Sesion Iniciada !!'); 
-      return respuesta.redirect('/')
+      peticion.session.cliente = cliente;
+      return respuesta.redirect('/index')
     }else{
       peticion.addFlash('men', 'Error en el inicio de sesion verifique el correo y la contrasena!!'); 
       return respuesta.redirect('/inicio-sesion')
@@ -40,6 +41,11 @@ module.exports = {
   iniciarSesion:async (peticion, respuesta)=>{
     respuesta.view('pages/iniciar_sesion')
 },
+  cerrar: async (peticion, respuesta) => {
+    peticion.session.cliente = undefined;
+    peticion.addFlash('mensaje', 'Sesión finalizada')
+    return respuesta.redirect("/");
+  },
 
 };
 
