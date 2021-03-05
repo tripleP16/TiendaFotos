@@ -15,7 +15,9 @@
           <img src= "<%= foto.contenido %>"  class="d-block w-100 imagenI">
           <div class="card-body">
             <h5 class="card-title"> $ <%= foto.precio %></h5>
-            <a href="#" class="btn btn-primary">Agregar al carrito</a>
+            <% if(session && session.cliente) {%>
+            <a href="/agregar-carro-compra/<%=foto.id%>" class="btn btn-primary">Agregar al carrito</a>
+            <%}%>
           </div>
         </div>
         

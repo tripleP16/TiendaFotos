@@ -5,6 +5,7 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
+
 module.exports = {
   registro:async (peticion, respuesta)=>{
       respuesta.view('pages/registro')
@@ -30,6 +31,8 @@ module.exports = {
     if(cliente){
       peticion.addFlash('men', 'Sesion Iniciada !!'); 
       peticion.session.cliente = cliente;
+      let carro = await CarroCompra.find({cliente:cliente.id})
+      peticion.session.carro = carro;
       return respuesta.redirect('/index')
     }else{
       peticion.addFlash('men', 'Error en el inicio de sesion verifique el correo y la contrasena!!'); 
@@ -43,6 +46,7 @@ module.exports = {
 },
   cerrar: async (peticion, respuesta) => {
     peticion.session.cliente = undefined;
+    peticion.session.carro = undefined;
     peticion.addFlash('mensaje', 'Sesión finalizada')
     return respuesta.redirect("/");
   },

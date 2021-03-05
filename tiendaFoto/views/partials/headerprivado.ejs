@@ -10,6 +10,9 @@
             <p class="nav-link"><%= session.cliente.nombre %></p>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/carro-de-compra"><i class="bi bi-cart-fill" style="font-size: 1rem;"></i><span class="badge bg-primary"><%=(session.carro) ? session.carro.length : 0 %></span></a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/cerrar-sesion">Cerrar Sesion</a>
           </li>
         </ul>
