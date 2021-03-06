@@ -1,7 +1,7 @@
 <div class="containerC">
 <div class="row ">
     <h1 class="text-center">Tus Fotos</h1>
-    <% var total = 0 %>
+    
     <% elementos.forEach(elemento =>{ %> 
         <div class="col-lg-4 col-sm-12 carta" >
           <div class="card" >
@@ -13,7 +13,6 @@
           </div>
           
         </div>
-        <%total+= elemento.foto.precio %>
         <% }) %>    
 </div>
 <div class="row">
