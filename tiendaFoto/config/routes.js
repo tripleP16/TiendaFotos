@@ -33,6 +33,7 @@ module.exports.routes = {
   'GET /pagar':'CompraController.pagar', 
   'GET /ordenes':{ action: 'Compra/ordenes', locals:{layout:'layouts/iniciado'} }, 
   'GET /ver-orden/:id':{ action: 'Compra/verOrdenes', locals:{layout:'layouts/iniciado'} }, 
+  'GET /top-vendidas':'PrincipalController.topVendidas',
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

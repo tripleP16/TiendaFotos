@@ -1,0 +1,28 @@
+<div class="container" id="carr">
+    <div class="mx-auto">
+      <h1 class="text-center">Las mas vendidas </h1>
+      <p class="text-center">Las mejores fotos a los mejores precios con tus fotos preferidas</p>
+      <% flash.get('men').forEach( function(msg){ %> 
+        <div>
+          <p class="text-center exito"><%= msg%></p>
+        </div>
+        <% }) %>
+    </div> 
+      <div class="row" > 
+          <% let contador = 1 %>
+        <% fotos.forEach(foto =>{ %> 
+        <div class="col-lg-4 col-sm-12 carta" >
+          <div class="card" >
+            <img src= "<%= foto.contenido %>"  class="d-block w-100 imagenI">
+            <div class="card-body">
+              <h5 class="card-title"> Se han vendido <%= foto.cantidad %></h5>
+              <h6># <%= contador ++ %></h6>
+            </div>
+          </div>
+          
+        </div>
+              
+        <% }) %>
+      </div>
+           
+   <br>
