@@ -31,7 +31,8 @@ module.exports.routes = {
   '/carro-de-compra':{ action: 'Compra/carrito', locals:{layout:'layouts/iniciado'} },
   'GET /eliminar-carrito/:id':'CompraController.eliminarCompra',
   'GET /pagar':'CompraController.pagar', 
-  'GET /ordenes':'CompraController.ordenes', 
+  'GET /ordenes':{ action: 'Compra/ordenes', locals:{layout:'layouts/iniciado'} }, 
+  'GET /ver-orden/:id':{ action: 'Compra/verOrdenes', locals:{layout:'layouts/iniciado'} }, 
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

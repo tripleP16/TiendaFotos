@@ -8,6 +8,7 @@
 
 
 
+
 module.exports = {
   
     agregarCompra: async (peticion, respuesta)=>{
@@ -67,12 +68,13 @@ module.exports = {
                     cliente:peticion.session.cliente.id,
                 }).fetch();
                 let elementos = await CarroCompra.find({cliente:peticion.session.cliente.id}).populate('foto')
-                elementos.forEach(element => {
-                    OrdenDetalle.create({
+                for (let i = 0; i < elementos.length; i++) {
+                    let detalle = await OrdenDetalle.create({
                         orden: orden.id, 
-                        foto : element.foto.id
+                        foto : elementos[i].foto.id
                     })
-                });
+                    
+                }
                 await CarroCompra.destroy({
                     cliente: peticion.session.cliente.id
                 });
@@ -93,6 +95,20 @@ module.exports = {
             return respuesta.redirect('/')
         }
     },
+
+    verOrdenes: async (peticion, respuesta)=>{
+        if(peticion.session && peticion.session.cliente){
+            var orden = await OrdenDeCompra.findOne({id:peticion.params.id, cliente:peticion.session.cliente.id})
+            if(orden){
+                let detalles = await OrdenDetalle.find({orden:orden.id}).populate('foto'); 
+                respuesta.view('pages/orden_detalle', {detalles:detalles, total:orden.total, numero:orden.id, fecha:orden.fecha})
+            }else{
+                return respuesta.redirect('/index')
+            }
+        }else{
+            return respuesta.redirect('/')
+        }
+    }
     
 };
 

@@ -1,0 +1,25 @@
+<div class="row containerC">
+        <h1 class="text-center">Orden de Compra # <%=numero%></h1>
+        <p class="text-center">Comprada en : <%= fecha.getFullYear() %> / <%= fecha.getMonth()+1 %> / <%= fecha.getDate() %></p>
+        <p class="text-center">Total: <%= total %></p>
+        <% flash.get('men').forEach( function(msg){ %> 
+          <div>
+            <p class="text-center exito"><%= msg%></p>
+          </div>
+          <% }) %>
+
+        <% detalles.forEach(detalle =>{ %> 
+            
+        <div class="col-lg-4 col-sm-12">
+                <div class="col-12 col-sm-12 carta" >
+                  <div class="card" >
+                    <img src= "<%= detalle.foto.contenido %>"  class="d-block w-100 imagenI">
+                    <div class="card-body">
+                      <h5 class="card-title"> $ <%= detalle.foto.precio %></h5>
+                    </div>
+                  </div>
+        </div>
+    </div>
+    <% }) %>
+
+</div>
