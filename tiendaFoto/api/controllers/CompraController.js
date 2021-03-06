@@ -6,6 +6,8 @@
  */
 
 
+
+
 module.exports = {
   
     agregarCompra: async (peticion, respuesta)=>{
@@ -82,6 +84,15 @@ module.exports = {
             return respuesta.redirect('/')
         }
     }, 
+
+    ordenes: async (peticion, respuesta) =>{
+        if(peticion.session && peticion.session.cliente){
+            let ordenes = await OrdenDeCompra.find({cliente:peticion.session.cliente.id }).sort('id desc'); 
+            respuesta.view('pages/ordenes', {ordenes:ordenes})
+        }else{
+            return respuesta.redirect('/')
+        }
+    },
     
 };
 
