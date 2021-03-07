@@ -1,0 +1,33 @@
+<div class="row containerC">
+    <h1 class="text-center">Clientes</h1>
+    <% flash.get('men').forEach( function(msg){ %> 
+        <div>
+          <p class="text-center exito"><%= msg%></p>
+        </div>
+    <% }) %>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Activa</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% clientes.forEach(cliente =>{ %>
+                <tr>
+                    <td><%= cliente.id%></td>
+                    <td><%= cliente.nombre%></td>
+                    <td><%= cliente.email %></td>
+                    <td><%= cliente.activa %></td>
+                    <td>
+                        <a href="/admin/ver-ordenes/<%=cliente.id%>" class="btn btn-primary">Ver Ordenes</a>
+                        <a href="/admin/desactivar-cliente/<%=cliente.id%>" class="btn btn-secondary">Desactivar Cliente</a>
+                    </td>
+                </tr>
+            <% }) %>   
+        </tbody>
+    </table>
+</div>

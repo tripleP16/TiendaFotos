@@ -28,7 +28,7 @@ module.exports = {
   },
   procesarInicio: async (peticion, respuesta)=>{
     let cliente = await Cliente.findOne({email:peticion.body.email, contrasena:peticion.body.contrasena}); 
-    if(cliente){
+    if(cliente && cliente.activa){
       peticion.addFlash('men', 'Sesion Iniciada !!'); 
       peticion.session.cliente = cliente;
       let carro = await CarroCompra.find({cliente:cliente.id})

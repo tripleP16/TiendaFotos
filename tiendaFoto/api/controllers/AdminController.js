@@ -78,5 +78,24 @@ module.exports = {
             peticion.addFlash('men', 'Foto inexistente')
             return respuesta.redirect("/admin/index");
         }
-      }
+      },
+
+      clientes: async (peticion, respuesta)=>{
+        let clientes = await Cliente.find(); 
+        if(peticion.session && peticion.session.admin){
+          respuesta.view('pages/admin/clientes', {clientes:clientes})
+        }else{
+          peticion.addFlash('men', 'Sesion invalida!!'); 
+          return respuesta.redirect('/admin/inicio-sesion')
+        }
+      }, 
+      ordenes: async(peticion, respuesta)=>{
+        if(peticion.session && peticion.session.admin){
+          let ordenes = await OrdenDeCompra.find({cliente:peticion.params.id }).sort('id desc'); 
+          respuesta.view('pages/admin/ordenes', {ordenes:ordenes})
+        }else{
+          peticion.addFlash('men', 'Sesion invalida!!'); 
+          return respuesta.redirect('/admin/inicio-sesion')
+        }
+      },
 }

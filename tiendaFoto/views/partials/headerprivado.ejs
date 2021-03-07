@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/index"><img src="/images/logo.png" alt="" id="logoNav"></a>
+      <a class="navbar-brand"><img src="/images/logo.png" alt="" id="logoNav"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -24,8 +24,21 @@
           </li>
           <% }else if(session && session.admin){%>
             <li class="nav-item">
+              <a class="nav-link" href="/admin/index">Principal <i class="bi bi-house-door-fill"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/clientes">Clientes <i class="bi bi-person-fill"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/administradores">Administradores <i class="bi bi-person-badge-fill"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/dashboard">Dashboard <i class="bi bi-card-list"></i></a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="/admin/cerrar-sesion">Cerrar Sesion</a>
             </li>
+            
           <% } %>
         </ul>
       </div>

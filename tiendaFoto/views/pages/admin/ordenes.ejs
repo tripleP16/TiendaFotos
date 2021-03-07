@@ -1,0 +1,23 @@
+<div class="container">
+    <h1 class="text-center">Ordenes del Cliente</h1>
+<table class="table table-striped">
+   <thead>
+       <tr>
+           <th>Numero de Orden</th>
+           <th>Fecha</th>
+           <th>Total</th>
+           <th>Opciones</th>
+       </tr>
+   </thead>
+   <tbody>
+    <% ordenes.forEach(orden =>{ %>
+       <tr>
+        <td><%= orden.id %></td>
+        <td><%= orden.fecha.getFullYear() %> / <%= orden.fecha.getMonth()+1 %> / <%= orden.fecha.getDate() %></td>
+        <td><%= orden.total %></td>
+        <td><a class="btn btn-warning" href="/ver-orden/<%= orden.id %>" >Detalles</a></td>
+       </tr>
+    <% }) %>   
+   </tbody>
+</table>
+</div>
