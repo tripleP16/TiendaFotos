@@ -8,6 +8,7 @@
                 <img src= "<%= elemento.foto.contenido %>"  class="d-block w-100 imagenI">
                 <div class="card-body">
                   <h5 class="card-title"> $ <%= elemento.foto.precio %></h5>
+                  <a href="/agregar-carro-compra/<%=elemento.foto.id%>" class="btn btn-primary">Agregar al carrito</a>
                   <a href="/eliminar-lista/<%=elemento.foto.id%>" class="btn btn-danger">Eliminar de la lista <i class="bi bi-bag-x-fill"></i></a>
                 </div>
               </div>

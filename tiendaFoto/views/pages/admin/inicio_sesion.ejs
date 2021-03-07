@@ -1,13 +1,13 @@
 
 <div class="row justify-content-center" >
     <div class="col-10 col-md-4 justify-content-center">
-        <h1 class="text-center">Iniciar Sesion</h1>
+        <h1 class="text-center">Iniciar Sesion Admin</h1>
         <% flash.get('men').forEach( function(msg){ %> 
           <div>
             <p class="error"><%= msg%></p>
           </div>
           <% }) %>
-        <form action="/procesar-inicio" method="POST">
+        <form action="/admin/procesar-inicio-sesion" method="POST">
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">

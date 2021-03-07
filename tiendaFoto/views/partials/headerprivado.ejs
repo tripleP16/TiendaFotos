@@ -6,6 +6,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <% if(session && session.cliente) { %>
           <li class="nav-item">
             <p class="nav-link"><%= session.cliente.nombre %></p>
           </li>
@@ -21,6 +22,11 @@
           <li class="nav-item">
             <a class="nav-link" href="/cerrar-sesion">Cerrar Sesion</a>
           </li>
+          <% }else if(session && session.admin){%>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/cerrar-sesion">Cerrar Sesion</a>
+            </li>
+          <% } %>
         </ul>
       </div>
     </div>

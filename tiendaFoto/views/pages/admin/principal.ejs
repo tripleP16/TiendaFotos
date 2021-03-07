@@ -1,0 +1,13 @@
+<div class="containerC" >
+    <div class="mx-auto">
+      <h1 class="text-center">Tu foto.com - Admin</h1>
+      <p class="text-center">Las mejores fotos a los mejores precios con tus fotos preferidas</p>
+      <% flash.get('men').forEach( function(msg){ %> 
+        <div>
+          <p class="text-center exito"><%= msg%></p>
+        </div>
+        <% }) %>
+    </div> 
+           
+   <br>
+   <br>

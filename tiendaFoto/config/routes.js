@@ -37,6 +37,11 @@ module.exports.routes = {
   'GET /agregar-lista/:id':'CompraController.agregarLista',
   'GET /ver-lista':{ action: 'Compra/verLista', locals:{layout:'layouts/iniciado'} }, 
   'GET /eliminar-lista/:id':'CompraController.eliminarLista',
+
+  'GET /admin/inicio-sesion':'AdminController.inicio',
+  'POST /admin/procesar-inicio-sesion':'AdminController.procesarInicio',
+  'GET /admin/index':{ action: 'Admin/principal', locals:{layout:'layouts/iniciado'} },
+  'GET /admin/cerrar-sesion':'AdminController.cerrar',
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
