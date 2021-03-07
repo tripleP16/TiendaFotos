@@ -34,6 +34,9 @@ module.exports.routes = {
   'GET /ordenes':{ action: 'Compra/ordenes', locals:{layout:'layouts/iniciado'} }, 
   'GET /ver-orden/:id':{ action: 'Compra/verOrdenes', locals:{layout:'layouts/iniciado'} }, 
   'GET /top-vendidas':'PrincipalController.topVendidas',
+  'GET /agregar-lista/:id':'CompraController.agregarLista',
+  'GET /ver-lista':{ action: 'Compra/verLista', locals:{layout:'layouts/iniciado'} }, 
+  'GET /eliminar-lista/:id':'CompraController.eliminarLista',
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

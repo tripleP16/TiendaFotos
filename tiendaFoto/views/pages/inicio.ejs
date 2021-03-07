@@ -17,6 +17,7 @@
             <h5 class="card-title"> $ <%= foto.precio %></h5>
             <% if(session && session.cliente) {%>
             <a href="/agregar-carro-compra/<%=foto.id%>" class="btn btn-primary">Agregar al carrito</a>
+            <a href="/agregar-lista/<%=foto.id%>" class="btn btn-secondary">Agregar a la lista de deseo</a>
             <%}%>
           </div>
         </div>

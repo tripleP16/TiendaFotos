@@ -1,0 +1,21 @@
+<div class="containerC">
+    <div class="row ">
+        <h1 class="text-center">Tu lista de deseos</h1>
+        
+        <% elementos.forEach(elemento =>{ %> 
+            <div class="col-lg-4 col-sm-12 carta" >
+              <div class="card" >
+                <img src= "<%= elemento.foto.contenido %>"  class="d-block w-100 imagenI">
+                <div class="card-body">
+                  <h5 class="card-title"> $ <%= elemento.foto.precio %></h5>
+                  <a href="/eliminar-lista/<%=elemento.foto.id%>" class="btn btn-danger">Eliminar de la lista <i class="bi bi-bag-x-fill"></i></a>
+                </div>
+              </div>
+              
+            </div>
+            <% }) %>    
+    </div>
+  
+    
+    
+    </div>

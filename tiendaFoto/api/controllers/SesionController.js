@@ -33,6 +33,7 @@ module.exports = {
       peticion.session.cliente = cliente;
       let carro = await CarroCompra.find({cliente:cliente.id})
       peticion.session.carro = carro;
+      peticion.session.lista =  await ListaDeDeseos.find({cliente:peticion.session.cliente.id})
       return respuesta.redirect('/index')
     }else{
       peticion.addFlash('men', 'Error en el inicio de sesion verifique el correo y la contrasena!!'); 
@@ -47,6 +48,7 @@ module.exports = {
   cerrar: async (peticion, respuesta) => {
     peticion.session.cliente = undefined;
     peticion.session.carro = undefined;
+    peticion.session.lista =  undefined;
     peticion.addFlash('mensaje', 'Sesión finalizada')
     return respuesta.redirect("/");
   },

@@ -9,6 +9,8 @@
 
 
 
+
+
 module.exports = {
   
     agregarCompra: async (peticion, respuesta)=>{
@@ -108,6 +110,50 @@ module.exports = {
         }else{
             return respuesta.redirect('/')
         }
+    }, 
+    agregarLista: async (peticion, respuesta)=>{
+            let foto = await ListaDeDeseos.findOne({cliente:peticion.session.cliente.id, foto:peticion.params.id}); 
+            if(foto){
+                peticion.addFlash('men','La foto ya esta en su lista!!')
+            }else{
+                
+                await ListaDeDeseos.create({
+                    cliente:peticion.session.cliente.id, 
+                    foto:peticion.params.id
+                })
+
+    
+                peticion.session.lista =  await ListaDeDeseos.find({cliente:peticion.session.cliente.id})
+                peticion.addFlash('men','Foto agregada satisfactoriamente!!')
+                
+            }
+            return respuesta.redirect('/index')
+        
+    }, 
+
+    verLista: async (peticion, respuesta)=>{
+        if(peticion.session && peticion.session.cliente){
+            let elementos =  await ListaDeDeseos.find({cliente:peticion.session.cliente.id}).populate('foto')
+            if(elementos){
+                respuesta.view('pages/lista', {elementos:elementos});
+            }else{
+                return respuesta.redirect('/index')
+            }
+        }else{
+            return respuesta.redirect('/')
+        }
+    },
+
+    eliminarLista: async(peticion, respuesta)=>{
+        let foto = await ListaDeDeseos.findOne({cliente:peticion.session.cliente.id, foto:peticion.params.id}); 
+        if(foto){
+            await ListaDeDeseos.destroy({
+                cliente:peticion.session.cliente.id, foto:peticion.params.id}
+            )
+            peticion.session.lista =  await ListaDeDeseos.find({cliente:peticion.session.cliente.id})
+            peticion.addFlash('men','Foto eliminada satisfactoriamente!!')
+        }
+        return respuesta.redirect('/ver-lista')
     }
     
 };
