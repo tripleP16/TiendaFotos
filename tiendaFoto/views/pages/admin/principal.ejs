@@ -14,6 +14,8 @@
                 <th>ID</th>
                 <th>Foto</th>
                 <th>Precio</th>
+                <th>Activa</th>
+                <th>Opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +24,14 @@
                 <td><%= foto.id %></td>
                 <td><img src="<%= foto.contenido %>" alt="" class="imagen"></td>
                 <td><%= foto.precio %></td>
+                <td><%= foto.activa %></td>
+                <td>
+                    <% if(foto.activa){ %>
+                        <a href="/admin/desactivar-foto/<%=foto.id%>" class="btn btn-danger">Desactivar </a>                 
+                    <% }else{ %>
+                        <a href="/admin/activar-foto/<%=foto.id%>" class="btn btn-success">Activar </a>
+                    <%}%>
+                </td>
             </tr>
             <%})%>
         </tbody>

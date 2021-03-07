@@ -55,5 +55,28 @@ module.exports = {
                   peticion.addFlash('men', 'No llegaron archivos')
                   return respuesta.redirect("/admin/index");
           })
+      }, 
+      activarFoto: async (peticion, respuesta)=>{
+        let foto = Foto.findOne({id:peticion.params.id}); 
+        if(foto){
+            await Foto.update({id:peticion.params.id}, {activa:true})
+            peticion.addFlash('men', 'Foto activada')
+            return respuesta.redirect("/admin/index");
+        }else{
+            peticion.addFlash('men', 'Foto inexistente')
+            return respuesta.redirect("/admin/index");
+        }
+
+      }, 
+      desactivarFoto: async (peticion, respuesta)=>{
+        let foto = Foto.findOne({id:peticion.params.id}); 
+        if(foto){
+            await Foto.update({id:peticion.params.id}, {activa:false})
+            peticion.addFlash('men', 'Foto desactivada')
+            return respuesta.redirect("/admin/index");
+        }else{
+            peticion.addFlash('men', 'Foto inexistente')
+            return respuesta.redirect("/admin/index");
+        }
       }
 }
