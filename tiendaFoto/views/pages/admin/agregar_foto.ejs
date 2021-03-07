@@ -1,0 +1,23 @@
+
+<div class="row justify-content-center" >
+    <div class="col-10 col-md-4 justify-content-center">
+        <h1 class="text-center">Agregar Foto </h1>
+        <% flash.get('men').forEach( function(msg){ %> 
+          <div>
+            <p class="error"><%= msg%></p>
+          </div>
+          <% }) %>
+        <form action="/admin/procesar-foto" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="foto" class="form-label">Foto</label>
+                <input type="file" class="form-control" id="foto" name="foto" required>
+              </div>
+              <div class="mb-3">
+                <label for="precio" class="form-label">Precio</label>
+                <input type="number" class="form-control" id="precio" name="precio" min="0" required>
+              </div>
+              <input type="submit" class="btn btn-success" value="Agregar Foto">              
+        </form>
+    </div>
+</div>
+

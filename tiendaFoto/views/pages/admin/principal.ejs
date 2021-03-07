@@ -8,6 +8,26 @@
         </div>
         <% }) %>
     </div> 
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Foto</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% fotos.forEach( foto =>{ %>
+            <tr>
+                <td><%= foto.id %></td>
+                <td><img src="<%= foto.contenido %>" alt="" class="imagen"></td>
+                <td><%= foto.precio %></td>
+            </tr>
+            <%})%>
+        </tbody>
+    </table>
+    <a href="/admin/agregar-foto" class="btn btn-primary">Agregar una foto </a>
+</div>
            
    <br>
    <br>

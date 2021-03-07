@@ -17,7 +17,8 @@ module.exports = {
       },
       principal: async (peticion, respuesta)=>{
           if(peticion.session && peticion.session.admin){
-              respuesta.view('pages/admin/principal')
+              let fotos = await Foto.find()
+              respuesta.view('pages/admin/principal', {fotos:fotos})
           }else{
             peticion.addFlash('men', 'Sesion invalida!!'); 
             return respuesta.redirect('/admin/inicio-sesion')
@@ -31,4 +32,10 @@ module.exports = {
         peticion.addFlash('mensaje', 'Sesión finalizada')
         return respuesta.redirect("/");
       },
+      crearFoto: async (peticion, respuesta)=>{
+          respuesta.view('pages/admin/agregar_foto')
+      }, 
+      procesarFoto: async (peticion, respuesta)=>{
+          
+      }
 }

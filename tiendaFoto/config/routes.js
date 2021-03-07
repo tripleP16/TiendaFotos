@@ -42,6 +42,8 @@ module.exports.routes = {
   'POST /admin/procesar-inicio-sesion':'AdminController.procesarInicio',
   'GET /admin/index':{ action: 'Admin/principal', locals:{layout:'layouts/iniciado'} },
   'GET /admin/cerrar-sesion':'AdminController.cerrar',
+  'GET /admin/agregar-foto':{ action: 'Admin/crearFoto', locals:{layout:'layouts/iniciado'} },
+  'POST /admin/procesar-foto':'AdminController.procesarFoto',
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
