@@ -1,6 +1,7 @@
 
 const path = require('path'); 
-const fs = require('fs')
+const fs = require('fs');
+
 module.exports = {
     inicio: async (peticion, respuesta)=>{
         respuesta.view('pages/admin/inicio_sesion')
@@ -163,4 +164,17 @@ module.exports = {
           return respuesta.redirect('/admin/inicio-sesion')
         }
       },
+
+      dashboard:async(peticion, respuesta)=>{
+        if(peticion.session && peticion.session.admin){
+          let ordenes = await OrdenDeCompra.find()
+          let clientes = await Cliente.find()
+          let Fotos = await Foto.find()
+          let admins = await Administrador.find()
+          respuesta.view('pages/admin/dashboard', {ordenes: ordenes.length, clientes: clientes.length , Fotos:Fotos.length , admins: admins.length})
+        }else{
+          peticion.addFlash('men', 'Sesion invalida!!'); 
+          return respuesta.redirect('/admin/inicio-sesion')
+        }
+      }
 }

@@ -54,6 +54,7 @@ module.exports.routes = {
   'GET /admin/administradores':{ action: 'Admin/administradores', locals:{layout:'layouts/iniciado'} },
   'GET /admin/desactivar-administrador/:id':'AdminController.desactivarAdministrador',
   'GET /admin/activar-administrador/:id':'AdminController.activarAdministrador',
+  'GET /admin/dashboard':{ action: 'Admin/dashboard', locals:{layout:'layouts/iniciado'} },
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
