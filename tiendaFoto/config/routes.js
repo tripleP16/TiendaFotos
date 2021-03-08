@@ -49,6 +49,8 @@ module.exports.routes = {
   'GET /admin/clientes':{ action: 'Admin/clientes', locals:{layout:'layouts/iniciado'} },
   'GET /admin/ver-ordenes/:id':{ action: 'Admin/ordenes', locals:{layout:'layouts/iniciado'} },
   'GET /admin/ver-orden/:id':{ action: 'Admin/orden', locals:{layout:'layouts/iniciado'} },
+  'GET /admin/desactivar-cliente/:id':'AdminController.desactivarCliente',
+  'GET /admin/activar-cliente/:id':'AdminController.activarCliente',
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

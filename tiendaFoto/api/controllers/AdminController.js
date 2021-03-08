@@ -113,4 +113,24 @@ module.exports = {
           return respuesta.redirect('/admin/inicio-sesion')
         }
       },
+      desactivarCliente:async(peticion, respuesta)=>{
+        if(peticion.session && peticion.session.admin){
+          await Cliente.update({id:peticion.params.id}, {activa:false}); 
+          peticion.addFlash('men', 'Cuenta desactivada!');
+          return respuesta.redirect('/admin/clientes')
+        }else{
+          peticion.addFlash('men', 'Sesion invalida!!'); 
+          return respuesta.redirect('/admin/inicio-sesion')
+        }
+      },
+      activarCliente:async(peticion, respuesta)=>{
+        if(peticion.session && peticion.session.admin){
+          await Cliente.update({id:peticion.params.id}, {activa:true}); 
+          peticion.addFlash('men', 'Cuenta Activada!!');
+          return respuesta.redirect('/admin/clientes')
+        }else{
+          peticion.addFlash('men', 'Sesion invalida!!'); 
+          return respuesta.redirect('/admin/inicio-sesion')
+        }
+      },
 }

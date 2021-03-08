@@ -23,8 +23,13 @@
                     <td><%= cliente.email %></td>
                     <td><%= cliente.activa %></td>
                     <td>
-                        <a href="/admin/ver-ordenes/<%=cliente.id%>" class="btn btn-primary">Ver Ordenes</a>
-                        <a href="/admin/desactivar-cliente/<%=cliente.id%>" class="btn btn-secondary">Desactivar Cliente</a>
+                        <% if (cliente.activa){ %> 
+                            <a href="/admin/desactivar-cliente/<%=cliente.id%>" class="btn btn-secondary">Desactivar Cliente</a>
+                        <% }else{ %>
+                            <a href="/admin/activar-cliente/<%=cliente.id%>" class="btn btn-secondary">Activar Cliente</a>
+                        <%}%>
+                            <a href="/admin/ver-ordenes/<%=cliente.id%>" class="btn btn-primary">Ver Ordenes</a>
+                        
                     </td>
                 </tr>
             <% }) %>   
