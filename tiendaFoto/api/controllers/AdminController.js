@@ -98,4 +98,19 @@ module.exports = {
           return respuesta.redirect('/admin/inicio-sesion')
         }
       },
+
+      orden:async (peticion, respuesta)=>{
+        if(peticion.session && peticion.session.admin){
+          var orden = await OrdenDeCompra.findOne({id:peticion.params.id})
+          if(orden){
+              let detalles = await OrdenDetalle.find({orden:orden.id}).populate('foto'); 
+              respuesta.view('pages/admin/orden_detalle', {detalles:detalles, total:orden.total, numero:orden.id, fecha:orden.fecha})
+          }else{
+              return respuesta.redirect('/admin/index')
+          }
+        }else{
+          peticion.addFlash('men', 'Sesion invalida!!'); 
+          return respuesta.redirect('/admin/inicio-sesion')
+        }
+      },
 }

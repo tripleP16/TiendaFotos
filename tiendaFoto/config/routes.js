@@ -48,6 +48,7 @@ module.exports.routes = {
   'GET /admin/activar-foto/:id':'AdminController.activarFoto',
   'GET /admin/clientes':{ action: 'Admin/clientes', locals:{layout:'layouts/iniciado'} },
   'GET /admin/ver-ordenes/:id':{ action: 'Admin/ordenes', locals:{layout:'layouts/iniciado'} },
+  'GET /admin/ver-orden/:id':{ action: 'Admin/orden', locals:{layout:'layouts/iniciado'} },
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

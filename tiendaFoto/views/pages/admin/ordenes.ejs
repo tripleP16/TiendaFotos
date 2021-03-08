@@ -15,7 +15,7 @@
         <td><%= orden.id %></td>
         <td><%= orden.fecha.getFullYear() %> / <%= orden.fecha.getMonth()+1 %> / <%= orden.fecha.getDate() %></td>
         <td><%= orden.total %></td>
-        <td><a class="btn btn-warning" href="/ver-orden/<%= orden.id %>" >Detalles</a></td>
+        <td><a class="btn btn-warning" href="/admin/ver-orden/<%= orden.id %>" >Detalles</a></td>
        </tr>
     <% }) %>   
    </tbody>
