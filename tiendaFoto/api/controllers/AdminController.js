@@ -133,4 +133,34 @@ module.exports = {
           return respuesta.redirect('/admin/inicio-sesion')
         }
       },
+      administradores: async (peticion, respuesta)=>{
+        if(peticion.session && peticion.session.admin){
+        
+          let administradores = await Administrador.find({id:{'!=':peticion.session.admin.id}}); 
+          respuesta.view('pages/admin/administradores', {administradores:administradores})
+         }else{
+          peticion.addFlash('men', 'Sesion invalida!!'); 
+          return respuesta.redirect('/admin/inicio-sesion')
+         }
+      }, 
+      desactivarAdministrador:async(peticion, respuesta)=>{
+        if(peticion.session && peticion.session.admin){
+          await Administrador.update({id:peticion.params.id}, {activa:false}); 
+          peticion.addFlash('men', 'Cuenta desactivada!');
+          return respuesta.redirect('/admin/administradores')
+        }else{
+          peticion.addFlash('men', 'Sesion invalida!!'); 
+          return respuesta.redirect('/admin/inicio-sesion')
+        }
+      },
+      activarAdministrador:async(peticion, respuesta)=>{
+        if(peticion.session && peticion.session.admin){
+          await Administrador.update({id:peticion.params.id}, {activa:true}); 
+          peticion.addFlash('men', 'Cuenta activada!');
+          return respuesta.redirect('/admin/administradores')
+        }else{
+          peticion.addFlash('men', 'Sesion invalida!!'); 
+          return respuesta.redirect('/admin/inicio-sesion')
+        }
+      },
 }

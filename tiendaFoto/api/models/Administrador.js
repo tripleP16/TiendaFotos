@@ -15,7 +15,8 @@
   
       email: { type: 'string' },
   
-      contrasena: { type: 'string' }
+      contrasena: { type: 'string' }, 
+      activa:{type:'boolean'},
   
       //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
       //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
