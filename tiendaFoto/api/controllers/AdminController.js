@@ -8,7 +8,7 @@ module.exports = {
     }, 
     procesarInicio: async (peticion, respuesta)=>{
         let admin = await Administrador.findOne({email:peticion.body.email, contrasena:peticion.body.contrasena}); 
-        if(admin){
+        if(admin && admin.activa){
           peticion.addFlash('men', 'Sesion Iniciada !!'); 
           peticion.session.admin = admin;
           peticion.session.cliente = undefined;
